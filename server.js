@@ -39,7 +39,7 @@ bot.on('guildMemberAdd', (member) => {
     console.log("guild found / fetching invites");
     guild.fetchInvites()
       .then(invites => {
-        console.log(`fetched invites ${invites}`);
+        console.log(`fetched invites ${invites.array()}`);
         for (const invite of invites.array()) {
           console.log(`all active invite ${invite.code}`);
           for (var i = 0; i < data.botInvites.length; i++) {
