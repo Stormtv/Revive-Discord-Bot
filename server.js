@@ -17,7 +17,6 @@ app.use(bodyParser.json());
 bot.on('ready', () => {
   console.log('I am ready!');
   let guild = bot.guilds.find(val => val.id === myConfig.guildID);
-  console.log(guild.roles);
   if (guild.available) {
     guild.fetchInvites()
       .then(invites => {
