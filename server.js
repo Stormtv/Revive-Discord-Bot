@@ -61,12 +61,18 @@ const createApplicantUser = (member, invite, i) => {
   console.log("Adding Role");
   member.addRole(myConfig.applicantRoleID)
     .then((member) => {
+      console.log(`Added role ${myConfig.applicantRoleID} to ${member.nickname}`);
       if (invite.channel) {
         console.log("Overwriting Applicant Channel Permissions");
         invite.channel.overwritePermissions(member, {
-         SEND_MESSAGES: true
+         SEND_MESSAGES: true,
+         READ_MESSAGES: true,
+         EMBED_LINKS: true,
+         ATTACH_FILES: true
         })
-        .then(() => console.log('Applicant User Created!'))
+        .then((applicant) => {
+          console.log(`Applicant Permissions overwritten ${invite.channel.permissionsFor(applicant).serialize()}`);
+        })
         .catch(console.error);
       }
     })
