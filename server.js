@@ -39,6 +39,9 @@ bot.on('guildMemberAdd', (member) => {
       .then(invites => {
         for (const invite of invites.array()) {
           for (var i = 0; i < data.botInvites.length; i++) {
+            console.log(invite.code);
+            console.log(data.botInvites[i]);
+            console.log(invite.uses);
             if (invite.code === data.botInvites[i] && invite.uses > 0) {
               console.log("New Applicant");
               data.botInvites.splice(i,1);
