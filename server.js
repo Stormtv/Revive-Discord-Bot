@@ -20,34 +20,24 @@ bot.on('ready', () => {
   if (guild.available) {
     guild.fetchInvites()
       .then(invites => {
-        console.log(`fetched invites ${invites.array()}`);
         for (const invite of invites.array()) {
           if (invite.inviter && invite.inviter.id &&
             invite.inviter.id === myConfig.botID && invite.uses !== null &&
             invite.uses === 0)
             botInvites.push(invite.code);
         }
-        console.log(botInvites);
       })
       .catch(console.error);
   }
 });
 bot.on('guildMemberAdd', (member) => {
-  console.log("new member");
   let guild = bot.guilds.find(val => val.id === myConfig.guildID);
   if (guild.available) {
-    console.log("guild found / fetching invites");
     guild.fetchInvites()
       .then(invites => {
-        console.log(`fetched invites ${invites.array()}`);
         for (const invite of invites.array()) {
-          console.log(`all active invite ${invite.code}`);
           for (var i = 0; i < botInvites.length; i++) {
-            console.log(invite.code);
-            console.log(botInvites[i]);
-            console.log(invite.uses);
             if (invite.code === botInvites[i] && invite.uses >= 1) {
-              console.log("New Applicant");
               createApplicantUser(member, invite, i);
             }
           }
@@ -58,12 +48,9 @@ bot.on('guildMemberAdd', (member) => {
 });
 
 const createApplicantUser = (member, invite, i) => {
-  console.log("Adding Role");
   member.addRole(myConfig.applicantRoleID)
     .then((member) => {
-      console.log(`Added role ${myConfig.applicantRoleID} to ${member.nickname}`);
       if (invite.channel) {
-        console.log("Overwriting Applicant Channel Permissions");
         invite.channel.overwritePermissions(member, {
          SEND_MESSAGES: true,
          READ_MESSAGES: true,
@@ -71,22 +58,17 @@ const createApplicantUser = (member, invite, i) => {
          ATTACH_FILES: true
         })
         .then((applicant) => {
-          console.log(`Applicant Permissions overwritten ${invite.channel.permissionsFor(applicant).serialize()}`);
         })
         .catch(console.error);
       }
     })
     .catch(console.error);
-  console.log(`setting nickname of applicant ${invite.channel.name}`);
   member.setNickname(invite.channel.name)
     .then((member) => {
-      console.log(`Applicant name set to ${invite.channel.name}`);
     })
     .catch(console.error);
-  console.log(`Deleting the invite`);
   invite.delete()
     .then(invite => {
-      console.log(`Deleted invite ${invite.code}`);
       botInvites.splice(i,1);
     })
     .catch(console.error);
@@ -185,12 +167,10 @@ ${applicationData.joke}\n\n`;
       { id: '290372821710798849', type: 'role', deny: 0, allow: 1024 }];
     guild.createChannel(channel, 'text', permissions)
      .then(channel => {
-       console.log(`Created new channel ${channel}`);
        channel.createInvite({
          temporary: false,
          maxUses: 2
        }).then(invite => {
-        console.log(`Sending invite url: ${invite.url} `);
         botInvites.push(invite.code);
         console.log(botInvites);
         res.send(invite.url);
@@ -198,7 +178,6 @@ ${applicationData.joke}\n\n`;
        .catch(console.error);
        channel.sendMessage(applicationText, {split:true})
        .then(message => {
-         console.log("sent message");
        })
        .catch(console.error);
      })
