@@ -10,7 +10,8 @@
     "express": "",
     "request": "",
     "discord.js": "",
-    "uws": ""
+    "uws": "",
+    "asyncawait": ""
   },
   "license": "MIT",
   "repository": {
