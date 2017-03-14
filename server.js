@@ -88,8 +88,7 @@ app.post('/createGuildApp', (req,res) => {
     about:req.body.about,
     joke:req.body.joke
   };
-  const applicationText = `@everyone New Application\n
-**What is your Name, Age and Sex?**\n
+  const applicationText = `**What is your Name, Age and Sex?**\n
 ━━━━━━━━━━━━━━━━━━━━━━━━\n
 ${applicationData.name}\n\n
 **Provide the location you will primarily will be playing from and a speedtest.net screenshot from the Chicago server**\n
@@ -164,19 +163,13 @@ ${applicationData.joke}\n\n`;
          temporary: false,
          maxUses: 1
        }).then(invite => {
-         console.log("About to send message");
-         channel.sendMessage(applicationText, {split:true})
-          .then(message => {
-            console.log("sent message");
-          })
-          .catch(console.error);
-          console.log(`Sending invite url: ${invite.url} `);
-          botInvites.push(invite.code);
-          if (res) {
-            res.send(invite.url);
-          } else {
-            console.log("can't reach response");
-          }
+        console.log(`Sending invite url: ${invite.url} `);
+        botInvites.push(invite.code);
+        if (res) {
+          res.send(invite.url);
+        } else {
+          console.log("can't reach response");
+        }
        })
        .catch(console.error);
      })
