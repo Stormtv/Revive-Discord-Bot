@@ -35,9 +35,12 @@ bot.on('guildMemberAdd', (member) => {
   console.log("new member");
   let guild = bot.guilds.find(val => val.id === myConfig.guildID);
   if (guild.available) {
+    console.log("guild found / fetching invites");
     guild.fetchInvites()
       .then(invites => {
+        console.log("fetched invites");
         for (const invite of invites.array()) {
+          console.log(`all active invite ${invite.code}`);
           for (var i = 0; i < data.botInvites.length; i++) {
             console.log(invite.code);
             console.log(data.botInvites[i]);
@@ -176,6 +179,7 @@ ${applicationData.joke}\n\n`;
        }).then(invite => {
         console.log(`Sending invite url: ${invite.url} `);
         botInvites.push(invite.code);
+        console.log(botInvites);
         res.send(invite.url);
        })
        .catch(console.error);
