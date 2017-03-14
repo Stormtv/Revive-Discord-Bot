@@ -42,13 +42,12 @@ bot.on('guildMemberAdd', (member) => {
         console.log(`fetched invites ${invites.array()}`);
         for (const invite of invites.array()) {
           console.log(`all active invite ${invite.code}`);
-          for (var i = 0; i < data.botInvites.length; i++) {
+          for (var i = 0; i < botInvites.length; i++) {
             console.log(invite.code);
-            console.log(data.botInvites[i]);
+            console.log(botInvites[i]);
             console.log(invite.uses);
-            if (invite.code === data.botInvites[i] && invite.uses > 0) {
+            if (invite.code === botInvites[i] && invite.uses >= 1) {
               console.log("New Applicant");
-              data.botInvites.splice(i,1);
               createApplicantUser(member, invite);
             }
           }
@@ -72,10 +71,17 @@ const createApplicantUser = (member, invite) => {
       }
     })
     .catch(console.error);
-  console.log("setting nickname of Applicant");
+  console.log("setting nickname of applicant");
   member.setNickname(invite.channel.name)
     .then((member) => {
       console.log(`Applicant name set to ${invite.channel.name}`);
+    })
+    .catch(console.error);
+  console.log(`Deleting the invite`);
+  invite.delete()
+    .then(invite => {
+      console.log(`Deleted invite ${invite.code}`);
+      botInvites.splice(i,1);
     })
     .catch(console.error);
 };
@@ -176,7 +182,7 @@ ${applicationData.joke}\n\n`;
        console.log(`Created new channel ${channel}`);
        channel.createInvite({
          temporary: false,
-         maxUses: 1
+         maxUses: 2
        }).then(invite => {
         console.log(`Sending invite url: ${invite.url} `);
         botInvites.push(invite.code);
