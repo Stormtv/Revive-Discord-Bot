@@ -20,6 +20,7 @@ bot.on('ready', () => {
   if (guild.available) {
     guild.fetchInvites()
       .then(invites => {
+        console.log(`fetched invites ${invites}`);
         for (const invite of invites.array()) {
           if (invite.inviter && invite.inviter.id &&
             invite.inviter.id === myConfig.botID && invite.uses !== null &&
