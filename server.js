@@ -17,6 +17,7 @@ app.use(bodyParser.json());
 bot.on('ready', () => {
   console.log('I am ready!');
   let guild = bot.guilds.find(val => val.id === myConfig.guildID);
+  console.log(guild.roles);
   if (guild.available) {
     guild.fetchInvites()
       .then(invites => {
@@ -48,7 +49,7 @@ bot.on('guildMemberAdd', (member) => {
             console.log(invite.uses);
             if (invite.code === botInvites[i] && invite.uses >= 1) {
               console.log("New Applicant");
-              createApplicantUser(member, invite);
+              createApplicantUser(member, invite, i);
             }
           }
         }
@@ -57,7 +58,7 @@ bot.on('guildMemberAdd', (member) => {
   }
 });
 
-const createApplicantUser = (member, invite) => {
+const createApplicantUser = (member, invite, i) => {
   console.log("Adding Role");
   member.addRole(myConfig.applicantRoleID)
     .then((member) => {
@@ -71,7 +72,7 @@ const createApplicantUser = (member, invite) => {
       }
     })
     .catch(console.error);
-  console.log("setting nickname of applicant");
+  console.log(`setting nickname of applicant ${invite.channel.name}`);
   member.setNickname(invite.channel.name)
     .then((member) => {
       console.log(`Applicant name set to ${invite.channel.name}`);
