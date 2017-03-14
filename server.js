@@ -26,11 +26,13 @@ bot.on('ready', () => {
             invite.uses === 0)
             botInvites.push(invite.code);
         }
+        console.log(botInvites);
       })
       .catch(console.error);
   }
 });
 bot.on('guildMemberAdd', (member) => {
+  console.log("new member");
   let guild = bot.guilds.find(val => val.id === myConfig.guildID);
   if (guild.available) {
     guild.fetchInvites()
@@ -61,6 +63,12 @@ const createApplicantUser = (member, invite) => {
         .then(() => console.log('Applicant User Created!'))
         .catch(console.error);
       }
+    })
+    .catch(console.error);
+  console.log("setting nickname of Applicant");
+  member.setNickname(invite.channel.name)
+    .then((member) => {
+      console.log(`Applicant name set to ${invite.channel.name}`);
     })
     .catch(console.error);
 };
