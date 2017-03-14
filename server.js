@@ -165,11 +165,12 @@ ${applicationData.joke}\n\n`;
        }).then(invite => {
         console.log(`Sending invite url: ${invite.url} `);
         botInvites.push(invite.code);
-        if (res) {
-          res.send(invite.url);
-        } else {
-          console.log("can't reach response");
-        }
+        res.send(invite.url);
+       })
+       .catch(console.error);
+       channel.sendMessage(applicationText, {split:true})
+       .then(message => {
+         console.log("sent message");
        })
        .catch(console.error);
      })
