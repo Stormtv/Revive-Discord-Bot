@@ -61,7 +61,7 @@ const createApplicantUser = (member, invite, i) => {
         .then((applicant) => {
           member.setNickname(invite.channel.name)
             .then((member) => {
-              invite.channel.sendMessage(`@${member.nickname} Thanks for applying to revive. You can find you application here please feel free to ask any questions.`);
+              invite.channel.sendMessage(`@${member.nickname} Thanks for applying to revive. You can find your application here please feel free to ask any questions.`);
             })
             .catch(console.error);
         })
