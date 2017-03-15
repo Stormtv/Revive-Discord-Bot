@@ -167,6 +167,7 @@ ${applicationData.joke}\n\n`;
     const channel = applicationData.tag.replace('#','-');
     const permissions = [
       { id: '231944378577321984', type: 'role', deny: 0, allow: 3072 },
+      { id: '291440686916698112', type: 'role', deny: 0, allow: 3072 },
       { id: '231933464201527298', type: 'role', deny: 1024, allow: 0 },
       {id: '231944387255336960',type: 'role',deny: 8192,allow: 3072 },
       {id: '231944378476658690',type:'role',deny:0,allow:3072},
