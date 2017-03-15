@@ -58,13 +58,17 @@ const createApplicantUser = (member, invite, i) => {
          ATTACH_FILES: true
         })
         .then((applicant) => {
+          member.setNickname(invite.channel.name)
+            .then((member) => {
+              invite.channel.sendMessage(`@${invite.channel.name}
+                Thanks for applying to revive.
+                You can find you application here please feel free
+                to ask any questions.`);
+            })
+            .catch(console.error);
         })
         .catch(console.error);
       }
-    })
-    .catch(console.error);
-  member.setNickname(invite.channel.name)
-    .then((member) => {
     })
     .catch(console.error);
   invite.delete()
@@ -161,10 +165,13 @@ ${applicationData.joke}\n\n`;
   let _this = this;
   if (guild.available) {
     const channel = applicationData.tag.replace('#','-');
-    const permissions = [{ id: '290360921467912192', type: 'role', deny: 1024, allow: 0 },
-      { id: '290364473955581953', type: 'role', deny: 0, allow: 1024 },
-      { id: '290372685731725312', type: 'role', deny: 0, allow: 1024 },
-      { id: '290372821710798849', type: 'role', deny: 0, allow: 1024 }];
+    const permissions = [
+      { id: '231944378577321984', type: 'role', deny: 0, allow: 3072 },
+      { id: '231933464201527298', type: 'role', deny: 1024, allow: 0 },
+      {id: '231944387255336960',type: 'role',deny: 8192,allow: 3072 },
+      {id: '231944378476658690',type:'role',deny:0,allow:3072},
+      {id: '231948453737922580',type: 'role',deny: 8192,allow: 3072 }
+    ];
     guild.createChannel(channel, 'text', permissions)
      .then(channel => {
        channel.createInvite({
@@ -172,14 +179,15 @@ ${applicationData.joke}\n\n`;
          maxUses: 2
        }).then(invite => {
         botInvites.push(invite.code);
-        console.log(botInvites);
         res.send(invite.url);
        })
        .catch(console.error);
-       channel.sendMessage(applicationText, {split:true})
-       .then(message => {
-       })
-       .catch(console.error);
+       channel.sendMessage(`@everyone New application please review.`).then(message => {
+         channel.sendMessage(applicationText, {split:true})
+         .then(message => {
+         })
+         .catch(console.error);
+       }).catch(console.error());
      })
      .catch(console.error);
   }
