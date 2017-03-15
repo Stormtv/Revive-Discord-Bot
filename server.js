@@ -184,7 +184,7 @@ ${applicationData.joke}\n\n`;
         res.send(invite.url);
        })
        .catch(console.error);
-       channel.sendMessage(` New application please review.`).then(message => {
+       channel.sendMessage(`@everyone New application please review.`).then(message => {
          channel.sendMessage(applicationText, {split:true})
          .then(message => {
          })
