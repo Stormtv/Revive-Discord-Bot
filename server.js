@@ -55,6 +55,7 @@ const createApplicantUser = (member, invite, i) => {
          SEND_MESSAGES: true,
          READ_MESSAGES: true,
          EMBED_LINKS: true,
+         READ_MESSAGE_HISTORY:true,
          ATTACH_FILES: true
         })
         .then((applicant) => {
@@ -183,7 +184,7 @@ ${applicationData.joke}\n\n`;
         res.send(invite.url);
        })
        .catch(console.error);
-       channel.sendMessage(`@everyone New application please review.`).then(message => {
+       channel.sendMessage(` New application please review.`).then(message => {
          channel.sendMessage(applicationText, {split:true})
          .then(message => {
          })
