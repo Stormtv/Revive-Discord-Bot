@@ -49,9 +49,9 @@ bot.on('guildMemberAdd', (member) => {
 
 const createApplicantUser = (member, invite, i) => {
   member.addRole(myConfig.applicantRoleID)
-    .then((member) => {
+    .then((applicant) => {
       if (invite.channel) {
-        invite.channel.overwritePermissions(member, {
+        invite.channel.overwritePermissions(applicant, {
          SEND_MESSAGES: true,
          READ_MESSAGES: true,
          EMBED_LINKS: true,
@@ -61,7 +61,7 @@ const createApplicantUser = (member, invite, i) => {
         .then((applicant) => {
           member.setNickname(invite.channel.name)
             .then((member) => {
-              invite.channel.sendMessage(`@${invite.channel.name} Thanks for applying to revive. You can find your application here please feel free to ask any questions.`);
+              invite.channel.sendMessage(`@${applicant.user.username} Thanks for applying to revive. You can find your application here please feel free to ask any questions.`);
             })
             .catch(console.error);
         })
