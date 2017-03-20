@@ -49,18 +49,18 @@ bot.on('guildMemberAdd', (member) => {
 
 const createApplicantUser = (member, invite, i) => {
   member.addRole(myConfig.applicantRoleID)
-    .then((applicant) => {
+    .then((member) => {
       if (invite.channel) {
-        invite.channel.overwritePermissions(applicant, {
+        invite.channel.overwritePermissions(member, {
          SEND_MESSAGES: true,
          READ_MESSAGES: true,
          EMBED_LINKS: true,
          READ_MESSAGE_HISTORY:true,
          ATTACH_FILES: true
         })
-        .then((applicant) => {
+        .then(() => {
           member.setNickname(invite.channel.name)
-            .then((member) => {
+            .then((applicant) => {
               invite.channel.sendMessage(`@${applicant.user.username} Thanks for applying to revive. You can find your application here please feel free to ask any questions.`);
             })
             .catch(console.error);
