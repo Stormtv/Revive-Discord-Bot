@@ -61,7 +61,6 @@ const createApplicantUser = (member, invite, i) => {
         .then(() => {
           member.setNickname(invite.channel.name)
             .then((applicant) => {
-              invite.channel.sendMessage(`@${applicant.user.username}#${applicant.user.discriminator} Thanks for applying to revive. You can find your application here please feel free to ask any questions.`);
               invite.channel.sendMessage(`${applicant.user} Thanks for applying to revive. You can find your application here please feel free to ask any questions.`);
             })
             .catch(console.error);
