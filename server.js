@@ -18,6 +18,8 @@ app.use(bodyParser.json());
 bot.on('message', message => {
   if (message.content === '!kern') {
     message.channel.sendMessage('https://clips.twitch.tv/MistyNiceBibimbapTheRinger');
+  } else if (message.content === '!varcster') {
+    message.channel.sendMessage('https://www.twitch.tv/videos/68214198');
   }
 });
 
