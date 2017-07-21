@@ -20,6 +20,8 @@ bot.on('message', message => {
     message.channel.sendMessage('https://clips.twitch.tv/MistyNiceBibimbapTheRinger');
   } else if (message.content === '!varcster') {
     message.channel.sendMessage('https://www.twitch.tv/videos/68214198');
+  } else if (message.content === '!zesty') {
+    message.channel.sendMessage('https://clips.twitch.tv/SpoopyFreezingWrenOSsloth');
   }
 });
 
