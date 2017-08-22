@@ -22,6 +22,8 @@ bot.on('message', message => {
     message.channel.sendMessage('https://www.twitch.tv/videos/68214198');
   } else if (message.content === '!zesty') {
     message.channel.sendMessage('https://clips.twitch.tv/SpoopyFreezingWrenOSsloth');
+  } else if (message.content === '!sephyr') {
+    message.channel.sendMessage('https://clips.twitch.tv/ColdFantasticClipzCoolCat');
   }
 });
 
