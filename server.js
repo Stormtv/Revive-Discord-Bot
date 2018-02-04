@@ -24,6 +24,8 @@ bot.on('message', message => {
     message.channel.sendMessage('https://clips.twitch.tv/SpoopyFreezingWrenOSsloth');
   } else if (message.content === '!sephyr') {
     message.channel.sendMessage('https://clips.twitch.tv/ColdFantasticClipzCoolCat');
+  } else if (message.content === '!dimi') {
+    message.channel.sendMessage('https://clips.twitch.tv/PowerfulFancyOcelotAliens');
   }
 });
 
@@ -139,7 +141,7 @@ ${applicationData.role}\n\n
 **List your Artifact Weapon points for all Specs **\n
 ━━━━━━━━━━━━━━━━━━━━━━━━\n
 ${applicationData.awp}\n\n
-**List Pre Tier-19 Mythic/Heroic Progression Experiences**\n
+**List Previous Mythic/Heroic Progression Experiences**\n
 ━━━━━━━━━━━━━━━━━━━━━━━━\n
 ${applicationData.prog}\n\n
 **Name your last TWO raiding guilds and the reason for leaving them?**\n
