@@ -7,7 +7,7 @@ const server = http.createServer(app);
 const request = require('request');
 const bodyParser = require('body-parser');
 const Discord = require('discord.js');
-const bot = new Discord.Client();
+const bot = new Discord.Client({autoReconnect:true});
 app.set('serverPort', myConfig.serverPort);
 app.use(bodyParser.urlencoded({
   extended: true
@@ -23,7 +23,7 @@ bot.on('message', message => {
   } else if (message.content === '!zesty') {
     message.channel.sendMessage('https://clips.twitch.tv/SpoopyFreezingWrenOSsloth');
   } else if (message.content === '!sephyr') {
-    message.channel.sendMessage('https://clips.twitch.tv/ColdFantasticClipzCoolCat');
+    message.channel.sendMessage('https://www.youtube.com/watch?v=p9UZnxDVxTY');
   } else if (message.content === '!dimi') {
     message.channel.sendMessage('https://clips.twitch.tv/PowerfulFancyOcelotAliens');
   }
