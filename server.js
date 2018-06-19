@@ -91,7 +91,7 @@ const createApplicantUser = (member, invite, i) => {
     .catch(console.error);
 };
 
-app.post('/createGuildApp', (req,res) => {
+app.post('/discord/createGuildApp', (req,res) => {
   const applicationData = {
     name:req.body.name,
     loc:req.body.loc,
@@ -207,11 +207,11 @@ ${applicationData.joke}\n\n`;
   }
 });
 
-app.get('/', (req,res) => {
+app.get('/discord', (req,res) => {
   res.send("Revive-Discord-Bot");
 });
 
-app.get('/callback', (req,res) => {
+app.get('/discord/callback', (req,res) => {
   //Handle Discord Request URI?
 });
 
