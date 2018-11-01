@@ -4,7 +4,6 @@ const express = require('express');
 const app = express();
 const http = require('http');
 const server = http.createServer(app);
-const request = require('request');
 const bodyParser = require('body-parser');
 const Discord = require('discord.js');
 const bot = new Discord.Client({autoReconnect:true});
@@ -26,6 +25,10 @@ bot.on('message', message => {
     message.channel.sendMessage('https://www.youtube.com/watch?v=p9UZnxDVxTY');
   } else if (message.content === '!dimi') {
     message.channel.sendMessage('https://clips.twitch.tv/PowerfulFancyOcelotAliens');
+  } else if (message.content === '!fire') {
+    message.channel.sendMessage('https://youtu.be/V552exgHaWU');
+  } else if (message.content === '!stagger') {
+    message.channel.sendMessage('When they nerf stagger \n https://cdn.discordapp.com/attachments/444357789025042432/507587021213007883/image0.jpg');
   }
 });
 
@@ -123,7 +126,7 @@ ${applicationData.loc}\n\n
 **What is your Battle.net Tag**\n
 ━━━━━━━━━━━━━━━━━━━━━━━━\n
 ${applicationData.tag}\n\n
-**Link to your main characters and alternate character's ADVANCED ARMORY**\n
+**Link to your main characters and alternate character's armory **\n
 ━━━━━━━━━━━━━━━━━━━━━━━━\n
 ${applicationData.armory}\n\n
 **Post a screenshot of your character in combat**\n
@@ -138,7 +141,7 @@ ${applicationData.logs}\n\n
 **What role and spec are you applying for**\n
 ━━━━━━━━━━━━━━━━━━━━━━━━\n
 ${applicationData.role}\n\n
-**List your Artifact Weapon points for all Specs **\n
+**Neck Level **\n
 ━━━━━━━━━━━━━━━━━━━━━━━━\n
 ${applicationData.awp}\n\n
 **List Previous Mythic/Heroic Progression Experiences**\n
