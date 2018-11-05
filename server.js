@@ -29,6 +29,8 @@ bot.on('message', message => {
     message.channel.sendMessage('https://youtu.be/V552exgHaWU');
   } else if (message.content === '!stagger') {
     message.channel.sendMessage('When they nerf stagger \n https://cdn.discordapp.com/attachments/444357789025042432/507587021213007883/image0.jpg');
+  } else if (message.content === '!mrblizzard') {
+    message.channel.sendMessage('https://youtu.be/dstyQa9JRgY');
   }
 });
 
