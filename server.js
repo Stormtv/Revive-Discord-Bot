@@ -31,6 +31,8 @@ bot.on('message', message => {
     message.channel.sendMessage('When they nerf stagger \n https://cdn.discordapp.com/attachments/444357789025042432/507587021213007883/image0.jpg');
   } else if (message.content === '!mrblizzard') {
     message.channel.sendMessage('https://youtu.be/dstyQa9JRgY');
+  } else if (message.content === '!seabreeze') {
+    message.channel.sendMessage(`PriestBot: How good is Seabreeze for shadow? Is the haste proc worth the lack of secondaries?\n\nIts not awful but its not amazing either. Mostly it doesnt change your gear prioritization. Its worth a tiny bit less than staves with BIS stats at the same ilvl`);
   }
 });
 
