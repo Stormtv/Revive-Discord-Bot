@@ -13,30 +13,32 @@ app.use(bodyParser.urlencoded({
 }));
 let botInvites = [];
 app.use(bodyParser.json());
-
+const prefix = '!'
 bot.on('message', message => {
-  if (message.author.bot) return;
-  if (message.content.startsWith('!kern')) {
+  if (!message.content.startsWith(prefix) || message.author.bot) return;
+  const args = message.content.slice(prefix.length).split(' ');
+  const command = args.shift().toLowerCase();
+  if (command === 'kern') {
     message.channel.sendMessage('https://clips.twitch.tv/MistyNiceBibimbapTheRinger');
-  } else if (message.content.startsWith('!kern2')) {
+  } else if (command === 'kern2') {
     message.channel.sendMessage('https://clips.twitch.tv/SarcasticConcernedHedgehogTebowing');
-  } else if (message.content.startsWith('!varcster')) {
+  } else if (command === 'varcster') {
     message.channel.sendMessage('https://www.twitch.tv/videos/68214198');
-  } else if (message.content.startsWith('!zesty')) {
+  } else if (command === 'zesty') {
     message.channel.sendMessage('https://clips.twitch.tv/SpoopyFreezingWrenOSsloth');
-  } else if (message.content.startsWith('!sephyr')) {
+  } else if (command === 'sephyr') {
     message.channel.sendMessage('https://www.youtube.com/watch?v=p9UZnxDVxTY');
-  } else if (message.content.startsWith('!dimi')) {
+  } else if (command === 'dimi') {
     message.channel.sendMessage('https://clips.twitch.tv/PowerfulFancyOcelotAliens');
-  } else if (message.content.startsWith('!fire')) {
+  } else if (command === 'fire') {
     message.channel.sendMessage('https://youtu.be/V552exgHaWU');
-  } else if (message.content.startsWith('!stagger')) {
+  } else if (command === 'stagger') {
     message.channel.sendMessage('When they nerf stagger \n https://cdn.discordapp.com/attachments/444357789025042432/507587021213007883/image0.jpg');
-  } else if (message.content.startsWith('!mrblizzard')) {
+  } else if (command === 'mrblizzard') {
     message.channel.sendMessage('https://youtu.be/dstyQa9JRgY');
-  } else if (message.content.startsWith('!seabreeze')) {
+  } else if (command === 'seabreeze') {
     message.channel.sendMessage(`PriestBot: How good is Seabreeze for shadow? Is the haste proc worth the lack of secondaries?\n\nIts not awful but its not amazing either. Mostly it doesnt change your gear prioritization. Its worth a tiny bit less than staves with BIS stats at the same ilvl`);
-  } else if (message.content.startsWith('!bobcommands')) {
+  } else if (command === 'bobcommands') {
     message.channel.sendMessage(`!kern\n!varcster\n!zesty\n!sephyr\n!dimi\n!fire\n!stagger\n!mrblizzard\n!seabreeze\n!kern2\n!bobcommands`);
   }
 });
