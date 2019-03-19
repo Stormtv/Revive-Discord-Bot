@@ -15,6 +15,7 @@ let botInvites = [];
 app.use(bodyParser.json());
 
 bot.on('message', message => {
+  if (message.author.bot) return;
   if (message.content.includes('!kern')) {
     message.channel.sendMessage('https://clips.twitch.tv/MistyNiceBibimbapTheRinger');
   } else if (message.content.includes('!varcster')) {
