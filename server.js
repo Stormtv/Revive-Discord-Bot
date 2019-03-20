@@ -38,8 +38,10 @@ bot.on('message', message => {
     message.channel.sendMessage('https://youtu.be/dstyQa9JRgY');
   } else if (command === 'seabreeze') {
     message.channel.sendMessage(`PriestBot: How good is Seabreeze for shadow? Is the haste proc worth the lack of secondaries?\n\nIts not awful but its not amazing either. Mostly it doesnt change your gear prioritization. Its worth a tiny bit less than staves with BIS stats at the same ilvl`);
+  } else if (command === 'deism') {
+    message.channel.sendMessage('https://clips.twitch.tv/BashfulCourageousDootHassaanChop');
   } else if (command === 'bobcommands') {
-    message.channel.sendMessage(`!kern\n!varcster\n!zesty\n!sephyr\n!dimi\n!fire\n!stagger\n!mrblizzard\n!seabreeze\n!kern2\n!bobcommands`);
+    message.channel.sendMessage(`!kern\n!varcster\n!zesty\n!sephyr\n!dimi\n!fire\n!stagger\n!mrblizzard\n!seabreeze\n!kern2\n!deism\n!bobcommands`);
   }
 });
 
