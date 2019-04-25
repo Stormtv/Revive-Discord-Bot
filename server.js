@@ -36,12 +36,18 @@ bot.on('message', message => {
     message.channel.sendMessage('When they nerf stagger \n https://cdn.discordapp.com/attachments/444357789025042432/507587021213007883/image0.jpg');
   } else if (command === 'mrblizzard') {
     message.channel.sendMessage('https://youtu.be/dstyQa9JRgY');
+  } else if (command === 'diminudes') {
+    message.channel.sendMessage('<https://www.youtube.com/watch?v=dQw4w9WgXcQ>');
   } else if (command === 'seabreeze') {
     message.channel.sendMessage(`PriestBot: How good is Seabreeze for shadow? Is the haste proc worth the lack of secondaries?\n\nIts not awful but its not amazing either. Mostly it doesnt change your gear prioritization. Its worth a tiny bit less than staves with BIS stats at the same ilvl`);
   } else if (command === 'deism') {
     message.channel.sendMessage('https://clips.twitch.tv/BashfulCourageousDootHassaanChop');
+  } else if (command === 'bthelight') {
+    message.channel.sendMessage('https://www.twitch.tv/videos/127633788');
+  } else if (command === 'swampletics') {
+    message.channel.sendMessage(`Meet Swampletics, my Morytania locked ultimate ironman. After recently maxing my ultimate ironman I decided to up the ante, and forge my own journey from scratch. No banking, no trading, but this time I can't leave Morytania.\n<https://youtu.be/rk5XuqLrf3U>`)
   } else if (command === 'bobcommands') {
-    message.channel.sendMessage(`!kern\n!varcster\n!zesty\n!sephyr\n!dimi\n!fire\n!stagger\n!mrblizzard\n!seabreeze\n!kern2\n!deism\n!bobcommands`);
+    message.channel.sendMessage(`!kern\n!varcster\n!zesty\n!sephyr\n!dimi\n!fire\n!stagger\n!mrblizzard\n!diminudes\n!seabreeze\n!kern2\n!deism\n!bthelight\n!swampletics\n!bobcommands`);
   }
 });
 
@@ -132,64 +138,64 @@ app.post('/discord/createGuildApp', (req,res) => {
   };
   const applicationText = `**What is your Name, Age and Sex?**\n
 ━━━━━━━━━━━━━━━━━━━━━━━━\n
-${applicationData.name}\n\n
+<${applicationData.name}>\n\n
 **Provide the location you will primarily will be playing from and a speedtest.net screenshot from the Chicago server**\n
 ━━━━━━━━━━━━━━━━━━━━━━━━\n
-${applicationData.loc}\n\n
+<${applicationData.loc}>\n\n
 **What is your Battle.net Tag**\n
 ━━━━━━━━━━━━━━━━━━━━━━━━\n
-${applicationData.tag}\n\n
+<${applicationData.tag}>\n\n
 **Link to your main characters and alternate character's armory **\n
 ━━━━━━━━━━━━━━━━━━━━━━━━\n
-${applicationData.armory}\n\n
+<${applicationData.armory}>\n\n
 **Post a screenshot of your character in combat**\n
 ━━━━━━━━━━━━━━━━━━━━━━━━\n
-${applicationData.sscombat}\n\n
+<${applicationData.sscombat}>\n\n
 **Do you have a functioning headset with microphone that you can use in Discord?**\n
 ━━━━━━━━━━━━━━━━━━━━━━━━\n
-${applicationData.headset}\n\n
+<${applicationData.headset}>\n\n
 **Post your recent warcraft logs**\n
 ━━━━━━━━━━━━━━━━━━━━━━━━\n
-${applicationData.logs}\n\n
+<${applicationData.logs}>\n\n
 **What role and spec are you applying for**\n
 ━━━━━━━━━━━━━━━━━━━━━━━━\n
-${applicationData.role}\n\n
+<${applicationData.role}>\n\n
 **Neck Level **\n
 ━━━━━━━━━━━━━━━━━━━━━━━━\n
-${applicationData.awp}\n\n
+<${applicationData.awp}>\n\n
 **List Previous Mythic/Heroic Progression Experiences**\n
 ━━━━━━━━━━━━━━━━━━━━━━━━\n
-${applicationData.prog}\n\n
+<${applicationData.prog}>\n\n
 **Name your last TWO raiding guilds and the reason for leaving them?**\n
 ━━━━━━━━━━━━━━━━━━━━━━━━\n
-${applicationData.left}\n\n
+<${applicationData.left}>\n\n
 **Take us through your opening rotation on a SINGLE TARGET fight. (Healers Ignore this)**\n
 ━━━━━━━━━━━━━━━━━━━━━━━━\n
-${applicationData.rotation}\n\n
+<${applicationData.rotation}>\n\n
 **What resources do you use to improve yourself?**\n
 ━━━━━━━━━━━━━━━━━━━━━━━━\n
-${applicationData.resources}\n\n
+<${applicationData.resources}>\n\n
 **How did you hear about us?**\n
 ━━━━━━━━━━━━━━━━━━━━━━━━\n
-${applicationData.hear}\n\n
+<${applicationData.hear}>\n\n
 **How do you handle criticism and adult humor?**\n
 ━━━━━━━━━━━━━━━━━━━━━━━━\n
-${applicationData.crit}\n\n
+<${applicationData.crit}>\n\n
 **You may be asked to sit on some fights for composition, gear, or general skill level how do you feel about that?**\n
 ━━━━━━━━━━━━━━━━━━━━━━━━\n
-${applicationData.sit}\n\n
+<${applicationData.sit}>\n\n
 **Do you have any commitments or schedule changes that we should know about?**\n
 ━━━━━━━━━━━━━━━━━━━━━━━━\n
-${applicationData.schedule}\n\n
+<${applicationData.schedule}>\n\n
 **Are you willing to test new content in PTR/Alpha/Beta?**\n
 ━━━━━━━━━━━━━━━━━━━━━━━━\n
-${applicationData.beta}\n\n
+<${applicationData.beta}>\n\n
 **Tell us a little bit about yourself. The more we know the better!**\n
 ━━━━━━━━━━━━━━━━━━━━━━━━\n
-${applicationData.about}\n\n
+<${applicationData.about}>\n\n
 **Tell us a joke**\n
 ━━━━━━━━━━━━━━━━━━━━━━━━\n
-${applicationData.joke}\n\n`;
+<${applicationData.joke}>\n\n`;
   let guild = bot.guilds.find(val => val.id === myConfig.guildID);
   let _this = this;
   if (guild.available) {
