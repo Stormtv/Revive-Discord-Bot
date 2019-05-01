@@ -46,6 +46,8 @@ bot.on('message', message => {
     message.channel.sendMessage('https://www.twitch.tv/videos/127633788');
   } else if (command === 'swampletics') {
     message.channel.sendMessage(`Meet Swampletics, my Morytania locked ultimate ironman. After recently maxing my ultimate ironman I decided to up the ante, and forge my own journey from scratch. No banking, no trading, but this time I can't leave Morytania.\n<https://youtu.be/rk5XuqLrf3U>`)
+  } else if (command === 'crenix') {
+    message.channel.sendMessage('https://clips.twitch.tv/BashfulMiniatureSparrowFeelsBadMan');
   } else if (command === 'bobcommands') {
     message.channel.sendMessage(`!kern\n!varcster\n!zesty\n!sephyr\n!dimi\n!fire\n!stagger\n!mrblizzard\n!diminudes\n!seabreeze\n!kern2\n!deism\n!bthelight\n!swampletics\n!bobcommands`);
   }
