@@ -7,6 +7,7 @@ const server = http.createServer(app);
 const bodyParser = require('body-parser');
 const Discord = require('discord.js');
 const bot = new Discord.Client({autoReconnect:true});
+const urlRegex = /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/ig
 app.set('serverPort', myConfig.serverPort);
 app.use(bodyParser.urlencoded({
   extended: true
@@ -138,27 +139,27 @@ app.post('/discord/createGuildApp', (req,res) => {
     about:req.body.about,
     joke:req.body.joke
   };
-  const applicationText = `**What is your Name, Age and Sex?**\n
+  let applicationText = `**What is your Name, Age and Sex?**\n
 ━━━━━━━━━━━━━━━━━━━━━━━━\n
 ${applicationData.name}\n\n
 **Provide the location you will primarily will be playing from and a speedtest.net screenshot from the Chicago server**\n
 ━━━━━━━━━━━━━━━━━━━━━━━━\n
-<${applicationData.loc}>\n\n
+${applicationData.loc}\n\n
 **What is your Battle.net Tag**\n
 ━━━━━━━━━━━━━━━━━━━━━━━━\n
 ${applicationData.tag}\n\n
 **Link to your main characters and alternate character's armory **\n
 ━━━━━━━━━━━━━━━━━━━━━━━━\n
-<${applicationData.armory}>\n\n
+${applicationData.armory}\n\n
 **Post a screenshot of your character in combat**\n
 ━━━━━━━━━━━━━━━━━━━━━━━━\n
-<${applicationData.sscombat}>\n\n
+${applicationData.sscombat}\n\n
 **Do you have a functioning headset with microphone that you can use in Discord?**\n
 ━━━━━━━━━━━━━━━━━━━━━━━━\n
 ${applicationData.headset}\n\n
 **Post your recent warcraft logs**\n
 ━━━━━━━━━━━━━━━━━━━━━━━━\n
-<${applicationData.logs}>\n\n
+${applicationData.logs}\n\n
 **What role and spec are you applying for**\n
 ━━━━━━━━━━━━━━━━━━━━━━━━\n
 ${applicationData.role}\n\n
@@ -198,6 +199,11 @@ ${applicationData.about}\n\n
 **Tell us a joke**\n
 ━━━━━━━━━━━━━━━━━━━━━━━━\n
 ${applicationData.joke}\n\n`;
+
+applicationText = applicationText.replace(urlRegex, (match) => {
+  return `<${match}>`
+})
+
   let guild = bot.guilds.find(val => val.id === myConfig.guildID);
   let _this = this;
   if (guild.available) {
